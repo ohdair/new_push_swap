@@ -2,7 +2,7 @@
 # define PUSH_SWAP_H
 
 #include "linked.h"
-#include <unistd.h>
+// #include <unistd.h>
 
 /*
 **	option_A
@@ -29,9 +29,14 @@ int	searchNode(t_list *ls, int search);
 /*
 **	check
 */
-int	check_ans(t_list *A, t_list *B, char alpha);
+void	check_ans(t_list *A, t_list *B, char alpha);
 int	check_A(t_list *A, t_list *B, int max);
 int	check_B(t_list *B, t_list *A);
 void	check(t_list *A, t_list *B, int max);
+
+/*
+**	read
+*/
+int	read_num(char *s);
 
 #endif
