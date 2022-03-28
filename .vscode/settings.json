@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"linked.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"stdio.h": "c"
 	}
 }

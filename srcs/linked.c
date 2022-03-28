@@ -1,14 +1,11 @@
-#include "linked.h"
+#include "push_swap.h"
 
-t_list	*init_list(void)
+void	init_list(t_list *ls)
 {
-	t_list *ls = (t_list*)malloc(sizeof(t_list));
-
 	ls->head = NULL;
 	ls->tail = NULL;
 	ls->size = 0;
 	ls->flag = 0;
-	return (ls);
 }
 
 void	addNode(t_list *ls, int data)
@@ -62,12 +59,14 @@ void	reset_list(t_list *ls)
 		tmp = cur->next;
 		// cur->next = NULL;
 		// cur->prev = NULL;
+		printf("%d ", cur->data);
 		free(cur);
 		cur = tmp;
 		ls->size--;
 	}
 	// cur->next = NULL;
 	// cur->prev = NULL;
+	printf("%d", cur->data);
 	free(cur);
 	ls->size--;
 	ls->head = NULL;

@@ -1,8 +1,6 @@
 #ifndef LINKED_H
 # define LINKED_H
 
-#include <stdlib.h>
-
 typedef struct	s_node
 {
 	int	index;
@@ -18,7 +16,7 @@ typedef struct	s_list{
 	int	flag;
 }	t_list;
 
-t_list	*init_list(void);
+void	init_list(t_list *ls);
 void	addNode(t_list *ls, int data);
 t_node	*delNode(t_list *ls);
 void	reset_list(t_list *ls);

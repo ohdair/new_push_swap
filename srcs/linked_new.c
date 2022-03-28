@@ -1,12 +1,11 @@
-#include "linked.h"
+#include "push_swap.h"
 
-void	init_all(t_list *A, t_list *B, t_list *ans, t_list *ansA, t_list *ansB)
+void	init_pushswap(t_pushswap *t)
 {
-	A = init_list();
-	B = init_list();
-	ans = init_list();
-	ansA = init_list();
-	ansB = init_list();
+	t->a = (t_list *)malloc(sizeof(t_list));
+	t->b = (t_list *)malloc(sizeof(t_list));
+	init_list(t->a);
+	init_list(t->b);
 }
 
 void	pushNode(t_list *ls, t_node *newNode)
