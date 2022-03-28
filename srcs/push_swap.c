@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/28 14:37:33 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/28 19:43:46 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	error(int code)
 {
 	if (code == 0)
-		write(1, "There was a problem while creating\n", 36);
+		write(1, "There was a problem while malloc creating\n", 42);
 	else if (code == 1)
 		write(1, "There was a problem while parsing\n", 35);
 	else
@@ -134,6 +134,13 @@ int	main(int argc, char **argv)
 		error(0);
 	if (!parsing_arg(argv, argc, t))
 		error(1);
-	reset_list(t->a);
+	// if (t->a->size > 3)
+	// {
+	// 	push(t, 'b');
+	// 	push(t, 'b');
+	// 	push(t, 'b');
+	// }
+	// reset_list(t->b);
+	// reset_list(t->a);
 	return (0);
 }

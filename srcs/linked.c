@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   linked.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
+/*   Updated: 2022/03/28 19:41:09 by jaewpark         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	init_list(t_list *ls)
@@ -23,11 +35,6 @@ void	addNode(t_list *ls, int data)
 	}
 	else
 	{
-		// tmp->next = ls->head;
-		// tmp->prev = ls->tail->next;
-		// ls->head = tmp;
-		// ls->tail->next = tmp;
-
 		tmp->prev = ls->head->prev;
 		tmp->next = ls->head;
 		ls->head->prev->next = tmp;
@@ -61,6 +68,7 @@ void	reset_list(t_list *ls)
 
 	cur = ls->head;
 	printf("HEAD : %d\n", cur->data);
+	printf("SIZE : %d\n", ls->size);
 	printf("TAIL : %d\n", ls->tail->data);
 	while (cur != ls->tail)
 	{

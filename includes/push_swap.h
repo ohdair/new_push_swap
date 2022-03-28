@@ -15,10 +15,10 @@ typedef struct	s_pushswap
 /*
 **	option_A
 */
-void	swap(t_list *ls);
-void	rotate(t_list *ls);
-void	reverse_rotate(t_list *ls);
-void	push(t_list *A, t_list *B);
+void	swap(t_pushswap *t, char alpha);
+void	rotate(t_pushswap *t, char alpha);
+void	reverse_rotate(t_pushswap *t, char alpha);
+void	push(t_pushswap *t, char alpha);
 
 /*
 **	option_B

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   linked_new.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/28 18:07:34 by jaewpark          #+#    #+#             */
+/*   Updated: 2022/03/28 19:39:55 by jaewpark         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	init_pushswap(t_pushswap *t)
@@ -20,9 +32,10 @@ void	pushNode(t_list *ls, t_node *newNode)
 	else
 	{
 		newNode->next = ls->head;
-		newNode->prev = ls->tail->next;
+		newNode->prev = ls->head->prev;
+		ls->head->prev->next = newNode;
+		ls->head->prev = newNode;
 		ls->head = newNode;
-		ls->tail->next = newNode;
 	}
 	ls->size++;
 }
