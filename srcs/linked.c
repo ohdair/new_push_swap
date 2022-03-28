@@ -23,10 +23,16 @@ void	addNode(t_list *ls, int data)
 	}
 	else
 	{
+		// tmp->next = ls->head;
+		// tmp->prev = ls->tail->next;
+		// ls->head = tmp;
+		// ls->tail->next = tmp;
+
+		tmp->prev = ls->head->prev;
 		tmp->next = ls->head;
-		tmp->prev = ls->tail->next;
-		ls->head = tmp;
-		ls->tail->next = tmp;
+		ls->head->prev->next = tmp;
+		ls->head->prev = tmp;
+		ls->tail = tmp;
 	}
 	ls->size++;
 }
@@ -54,6 +60,8 @@ void	reset_list(t_list *ls)
 	t_node	*tmp;
 
 	cur = ls->head;
+	printf("HEAD : %d\n", cur->data);
+	printf("TAIL : %d\n", ls->tail->data);
 	while (cur != ls->tail)
 	{
 		tmp = cur->next;
