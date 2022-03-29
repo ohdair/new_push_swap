@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 10:03:08 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/29 12:18:08 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ void	error(int code)
 int	main(int argc, char **argv)
 {
 	t_pushswap	*t;
-	char		**a;
 
-	a = argv;
 	if (argc < 2)
 		exit(1);
 	t = (t_pushswap *)malloc(sizeof(t_pushswap));
@@ -57,6 +55,9 @@ int	main(int argc, char **argv)
 		error(0);
 	if (!parsing_arg(argv, argc, t))
 		error(1);
+	get_lis(t);
+	printf("\nLIS : %d\n", t->lis);
+	// a_to_b(t);
 	// if (t->a->size > 3)
 	// {
 	// 	push(t, 'b');

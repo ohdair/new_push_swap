@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:04:23 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 10:04:24 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/29 11:35:10 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ typedef struct s_pushswap
 {
 	t_list	*a;
 	t_list	*b;
+	int		min;
+	int		mid;
+	int		max;
+	int		lis;
 }	t_pushswap;
 
 /*
@@ -50,6 +54,16 @@ void	check(t_list *A, t_list *B, int max);
 **	parsing
 */
 int		parsing_arg(char **argv, int argc, t_pushswap *t);
+
+/*
+**	lis
+*/
+int	get_lis(t_pushswap *t);
+
+/*
+**	sort
+*/
+void	a_to_b(t_pushswap *t);
 
 /*
 **	main
