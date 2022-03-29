@@ -9,9 +9,10 @@ OBJ_DIR = ./obj/
 INC_DIR = ./includes/
 
 SRC_FILES = push_swap.c \
-			linked_new.c \
 			linked.c \
-			option_A.c \
+			utils_a.c \
+			utils_b.c \
+			parsing.c \
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 

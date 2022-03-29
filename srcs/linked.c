@@ -6,24 +6,53 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/28 19:41:09 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/29 09:28:55 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "linked.h"
+// !!!!!!!!!!!!!!!!!!!!!!   임시 헤더 파일 무조건 지울 것   !!!!!!!!!!!!!!!!!!!!!!
+#include <stdio.h>
 
-void	init_list(t_list *ls)
+void	pushNode(t_list *ls, t_node *newNode)
 {
-	ls->head = NULL;
-	ls->tail = NULL;
-	ls->size = 0;
-	ls->flag = 0;
+	if (ls->head == NULL)
+	{
+		ls->head = newNode;
+		ls->tail = newNode;
+		newNode->next = newNode;
+		newNode->prev = newNode;
+	}
+	else
+	{
+		newNode->next = ls->head;
+		newNode->prev = ls->head->prev;
+		ls->head->prev->next = newNode;
+		ls->head->prev = newNode;
+		ls->head = newNode;
+	}
+	ls->size++;
+}
+
+int	searchNode(t_list *ls, int search)
+{
+	t_node	*cur;
+
+	cur = ls->head;
+	while (cur != ls->tail)
+	{
+		if (cur->data == search)
+			break ;
+		cur = cur->next;
+	}
+	return (cur->index);
 }
 
 void	addNode(t_list *ls, int data)
 {
-	t_node *tmp = (t_node*)malloc(sizeof(t_node));
+	t_node	*tmp;
 
+	tmp = (t_node *)malloc(sizeof(t_node));
 	tmp->data = data;
 	tmp->index = 0;
 	if (ls->head == NULL)
@@ -55,7 +84,6 @@ t_node	*delNode(t_list *ls)
 	ls->tail->next = tmp;
 	cur->next = NULL;
 	cur->prev = NULL;
-	// free(cur);	void형 -> t_node 형으로 변경하여 push에 사용
 	ls->head = tmp;
 	ls->size--;
 	return (cur);
@@ -73,15 +101,11 @@ void	reset_list(t_list *ls)
 	while (cur != ls->tail)
 	{
 		tmp = cur->next;
-		// cur->next = NULL;
-		// cur->prev = NULL;
 		printf("%d ", cur->data);
 		free(cur);
 		cur = tmp;
 		ls->size--;
 	}
-	// cur->next = NULL;
-	// cur->prev = NULL;
 	printf("%d", cur->data);
 	free(cur);
 	ls->size--;

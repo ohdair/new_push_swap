@@ -1,38 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 10:04:23 by jaewpark          #+#    #+#             */
+/*   Updated: 2022/03/29 10:04:24 by jaewpark         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "linked.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include "linked.h"
+# include <unistd.h>
 
-typedef struct	s_pushswap
+typedef struct s_pushswap
 {
 	t_list	*a;
 	t_list	*b;
 }	t_pushswap;
 
 /*
-**	option_A
+**	utils_a
 */
-void	swap(t_pushswap *t, char alpha);
-void	rotate(t_pushswap *t, char alpha);
-void	reverse_rotate(t_pushswap *t, char alpha);
-void	push(t_pushswap *t, char alpha);
+int		swap(t_pushswap *t, char alpha);
+int		rotate(t_pushswap *t, char alpha);
+int		reverse_rotate(t_pushswap *t, char alpha);
+int		push(t_pushswap *t, char alpha);
 
 /*
-**	option_B
+**	util_b
 */
-void	ss(t_list *A, t_list *B);
-void	rr(t_list *A, t_list *B);
-void	rrr(t_list *A, t_list *B);
-
-/*
-**	linked_new
-*/
-void	init_pushswap(t_pushswap *t);
-void	pushNode(t_list *ls, t_node *newNode);
-int		searchNode(t_list *ls, int search);
+void	call_utils(t_pushswap *t, char *alpha);
+void	ss(t_pushswap *t);
+void	rr(t_pushswap *t);
+void	rrr(t_pushswap *t);
 
 /*
 **	check
@@ -43,8 +47,13 @@ int		check_B(t_list *B, t_list *A);
 void	check(t_list *A, t_list *B, int max);
 
 /*
-**	read
+**	parsing
 */
-int		read_num(char *s);
+int		parsing_arg(char **argv, int argc, t_pushswap *t);
+
+/*
+**	main
+*/
+void	error(int code);
 
 #endif
