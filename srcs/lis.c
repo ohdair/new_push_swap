@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:15:57 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 12:20:27 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/29 13:21:15 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,10 @@ static int	*get_array(t_pushswap *t)
 		i++;
 	}
 	array[i] = cur->data;
-	get_index(t, array);
 	return (array);
 }
 
-static void	put_lis(t_pushswap *t, int *lis)
+static void	put_lis(t_pushswap *t, int *lis, int *array)
 {
 	t_node	*cur;
 	int		i;
@@ -84,12 +83,12 @@ static void	put_lis(t_pushswap *t, int *lis)
 	{
 		cur->index = lis[i];
 		cur = cur->next;
-		// if (max > ft_max(lis[i], lis[i + 1]))
-		// 	max = ft_max(lis[i], lis[i + 1]);
-		printf("%d ", lis[i]);
+		if (max < ft_max(lis[i], lis[i + 1]))
+			max = ft_max(lis[i], lis[i + 1]);
 		i++;
 	}
 	cur->index = lis[i];
+	get_index(t, array);
 	t->lis = max;
 	free(lis);
 }
@@ -97,7 +96,7 @@ static void	put_lis(t_pushswap *t, int *lis)
 int	get_lis(t_pushswap *t)
 {
 	int	*lis;
-	int *array;
+	int	*array;
 	int	i;
 	int	j;
 
@@ -106,19 +105,17 @@ int	get_lis(t_pushswap *t)
 		error(0);
 	array = get_array(t);
 	i = t->a->size - 1;
+	lis[i] = 1;
 	while (i >= 0)
 	{
-		j = i;
+		j = i - 1;
 		lis[i] = 1;
-		while (j < t->a->size)
-		{
+		while (j++ < t->a->size)
 			if (array[i] < array[j])
 				lis[i] = ft_max(lis[i], lis[j] + 1);
-			++j;
-		}
 		--i;
 	}
-	put_lis(t, lis);
+	put_lis(t, lis, array);
 	free(array);
 	return (1);
 }

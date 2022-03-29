@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 12:18:08 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/29 13:26:06 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ void	error(int code)
 	exit(1);
 }
 
-	// 에러 파일 만들기
-	// 파싱 완료 후 push_swap 함수 진행
-	// push_swap(t);
 int	main(int argc, char **argv)
 {
 	t_pushswap	*t;
@@ -56,15 +53,18 @@ int	main(int argc, char **argv)
 	if (!parsing_arg(argv, argc, t))
 		error(1);
 	get_lis(t);
-	printf("\nLIS : %d\n", t->lis);
-	// a_to_b(t);
-	// if (t->a->size > 3)
-	// {
-	// 	push(t, 'b');
-	// 	push(t, 'b');
-	// 	push(t, 'b');
-	// }
-	// reset_list(t->b);
-	// reset_list(t->a);
+	a_to_b(t);
+
+	/*
+	현재 진행상황 : 화요일 13:24
+		1. array 생성 max, min, mid 값 산출
+		2. array 이용해서 lis 생성
+		3. lis 이용해서 a_to_b 함수 완료
+	테스트
+		a_to_b 확인 까지 완료
+	*/
+	reset_list(t->a);
+	printf("\n------up : a / down : b------\n");
+	reset_list(t->b);
 	return (0);
 }
