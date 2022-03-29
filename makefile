@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = gcc
 RM = rm -f
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 SRC_DIR = ./srcs/
 OBJ_DIR = ./obj/
@@ -14,7 +14,8 @@ SRC_FILES = push_swap.c \
 			utils_b.c \
 			parsing.c \
 			lis.c \
-			sort.c \
+			sort_a.c \
+			sort_b.c \
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 

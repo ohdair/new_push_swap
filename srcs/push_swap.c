@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 13:26:06 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:50:09 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	init_pushswap(t_pushswap *t)
 	t->b = (t_list *)malloc(sizeof(t_list));
 	init_list(t->a);
 	init_list(t->b);
+	t->rec_loc = 0;
+	t->rec_min = 2147483647;
 }
 
 void	error(int code)
@@ -54,7 +56,7 @@ int	main(int argc, char **argv)
 		error(1);
 	get_lis(t);
 	a_to_b(t);
-
+	b_to_a(t);
 	/*
 	현재 진행상황 : 화요일 13:24
 		1. array 생성 max, min, mid 값 산출
@@ -65,6 +67,7 @@ int	main(int argc, char **argv)
 	*/
 	reset_list(t->a);
 	printf("\n------up : a / down : b------\n");
-	reset_list(t->b);
+	if (t->b->size)
+		reset_list(t->b);
 	return (0);
 }
