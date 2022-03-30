@@ -6,131 +6,130 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:28:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 22:03:46 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/30 15:36:10 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-static int	**database(t_pushswap *t)
+void	do_push(t_pushswap *t, int **db)
 {
-	int	**db;
 	int	i;
-	int	j;
+	int	min;
+	int	push_this;
 
-	db = (int **)malloc(sizeof(int *) * t->b->size);
-	if (!db)
-		error(0);
+	i = 0;
+	min = db[i][6];
+	while (++i < t->b->size)
+		if (min > db[i][6])
+			min = db[i][6];
 	i = -1;
 	while (++i < t->b->size)
-	{
-		// ra rra rb rrb rr rrr sum(배열 7개 순서)
-		db[i] = (int *)malloc(sizeof(int) * 7);
-		if (!db[i])
-			error(0);
-		j = -1;
-		while (++j < 7)
-			db[i][j] = 0;
-	}
-	t->b->flag = 0;
-	return (db);
+		if (min == db[i][6])
+			push_this = i;
+
+	// i = 0;
+	// push_this = 0;
+	// min = db[i][6];
+	// while (++i < t->b->size)
+	// 	if (min > db[i][6])
+	// 	{
+	// 		min = db[i][6];
+	// 		push_this = i;
+	// 	}
+
+	printf("push this : %d\n", push_this);
 }
 
-static void	calculate(int **db, int index, int a, int b)
+void	calculate(int *db)
 {
-	if (db[index][a] > 0 && db[index][b] > 0)
+	db[4] = ft_min((float)db[0], (float)db[2]);
+	db[0] -= db[4];
+	db[2] -= db[4];
+	db[5] = ft_min((float)db[1], (float)db[3]);
+	db[1] -= db[5];
+	db[3] -= db[5];
+	db[6] = ft_min((float)(db[0] + db[2] + db[4]), \
+	(float)(db[1] + db[3] + db[5]));
+	if (db[0] + db[2] + db[4] < db[1] + db[3] + db[5])
 	{
-		if (db[index][a] >= db[index][b])
-		{
-			db[index][a] -= db[index][b];
-			db[index][b] = 0;
-			db[index][b * 2 - a] = db[index][b];
-		}
-		else
-		{
-			db[index][a] = 0;
-			db[index][b] -= db[index][a];
-			db[index][b * 2 - a] = db[index][a];
-		}
+		db[1] = 0;
+		db[3] = 0;
+		db[5] = 0;
 	}
-}
-
-// ra rra rb rrb rr rrr sum(배열 7개 순서)
-static void	write_db(t_pushswap *t, int **db, int index)
-{
-	t_node	*cur;
-	t_node	*tmp;
-	int		location;
-
-	location = -1;
-	cur = t->b->head;
-	while (++location < index)
-		cur = cur->next;
-	if (index <= t->b->size - index)
-		db[index][2] = index;
 	else
-		db[index][3] = t->b->size - index;
-	location = -1;
-	tmp = t->a->head;
-	reset_record(t);
-	while (++location < t->a->size)
 	{
-		if (tmp->data - cur->data > 0)
-			record(t, location, tmp->data - cur->data);
-		tmp = tmp->next;
+		db[0] = 0;
+		db[2] = 0;
+		db[4] = 0;
 	}
-	printf("%d location\n", t->rec_loc);
-	if (t->rec_loc <= t->a->size - t->rec_loc)
-		db[index][0] = t->rec_loc;
-	else
-		db[index][1] = t->a->size - t->rec_loc;
 }
 
-static void	do_push(t_pushswap *t, int **db, int address)
+static void	dest_me(t_pushswap *t, int **db, t_node *me, int my_location)
 {
-	while (db[address][0]--)
-		call_utils(t, "ra");
-	while (db[address][1]--)
-		call_utils(t, "rra");
-	while (db[address][2]--)
-		call_utils(t, "rb");
-	while (db[address][3]--)
-		call_utils(t, "rrb");
-	while (db[address][4]--)
-		call_utils(t, "rr");
-	while (db[address][5]--)
-		call_utils(t, "rrr");
-	delete_db(t, db);
-	call_utils(t, "pa");
+	t_node	*com;
+	float	*array;
+	int		dest;
+	int		min;
+
+	com = t->a->head;
+	dest = -1;
+	min = 2147483647;
+	array = (float *)malloc(sizeof(float) * t->a->size);
+	if (!array)
+		error(0);
+	while (++dest < t->a->size)
+	{
+		array[dest] = (float)(com->data - me->data);
+		if (array[dest] > 0)
+			min = ft_min(array[dest], (float)min);
+		com = com->next;
+	}
+	dest = -1;
+	while (dest < t->a->size)
+		if (array[++dest] == min)
+			break ;
+	db[my_location][0] = dest;
+	db[my_location][1] = t->a->size - dest;
+	free(array);
+}
+
+static void	find_me(t_pushswap *t, int **db)
+{
+	t_node	*me;
+	int		my_location;
+
+	me = t->b->head;
+	my_location = -1;
+	while (++my_location < t->b->size)
+	{
+		dest_me(t, db, me, my_location);
+		db[my_location][2] = my_location;
+		db[my_location][3] = t->b->size - my_location;
+		calculate(db[my_location]);
+		me = me->next;
+	}
 }
 
 void	b_to_a(t_pushswap *t)
 {
 	int	**db;
-	int	address;
 	int	i;
 
-	while (t->b->size)
+	db = database(t);
+	// reset_db(t, db);
+	find_me(t, db);
+	// do_push(t, db);
+	i = -1;
+	while (++i < t->b->size)
 	{
-		i = -1;
-		db = database(t);
-		printf("%d번째 db : \n", t->b->size);
-		while (++i < t->b->size)
-		{
-			write_db(t, db, i);
-			calculate(db, i, 0, 2);
-			calculate(db, i, 1, 3);
-			db[i][6] = db[i][0] + db[i][1] + db[i][2] + db[i][3] + \
-			db[i][4] + db[i][5];
-			if (t->b->flag >= db[i][6])
-			{
-				t->b->flag = db[i][6];
-				address = i;
-			}
-			printf("%d %d %d %d %d %d = %d\n", db[i][0], db[i][1], db[i][2], db[i][3], db[i][4], db[i][5], db[i][6]);
-		}
-		printf("\n");
-		do_push(t, db, address);
+		printf("%d번째 : %d ", i, db[i][0]);
+		printf("%d ", db[i][1]);
+		printf("%d ", db[i][2]);
+		printf("%d ", db[i][3]);
+		printf("%d ", db[i][4]);
+		printf("%d ", db[i][5]);
+		printf(" = %d\n", db[i][6]);
 	}
+	delete_db(t, db);
 }

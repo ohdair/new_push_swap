@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 20:50:09 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/30 13:03:40 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	init_pushswap(t_pushswap *t)
 	t->b = (t_list *)malloc(sizeof(t_list));
 	init_list(t->a);
 	init_list(t->b);
-	t->rec_loc = 0;
-	t->rec_min = 2147483647;
 }
 
 void	error(int code)

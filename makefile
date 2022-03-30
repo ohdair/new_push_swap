@@ -16,6 +16,7 @@ SRC_FILES = push_swap.c \
 			lis.c \
 			sort_a.c \
 			sort_b.c \
+			sort_utils.c \
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
