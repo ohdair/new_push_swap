@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:24:19 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 10:37:44 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/30 22:34:27 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,41 @@ void	a_to_b(t_pushswap *t)
 			t->lis--;
 		}
 	}
+}
+
+void	set_push(t_pushswap *t, int ***db, int this)
+{
+	printf("%d : ", this);
+	while ((*db)[this][0]-- > 0)
+		call_utils(t, "ra");
+	while ((*db)[this][1]-- > 0)
+		call_utils(t, "rra");
+	while ((*db)[this][2]-- > 0)
+		call_utils(t, "rb");
+	while ((*db)[this][3]-- > 0)
+		call_utils(t, "rrb");
+	while ((*db)[this][4]-- > 0)
+		call_utils(t, "rr");
+	while ((*db)[this][5]-- > 0)
+		call_utils(t, "rrr");
+	call_utils(t, "pa");
+}
+
+void	get_push(t_pushswap *t, int ***db)
+{
+	int	i;
+	int	min;
+	int	push_this;
+
+	i = 0;
+	min = (*db)[i][6];
+	while (++i < t->b->size)
+		if (min > (*db)[i][6])
+			min = (*db)[i][6];
+	i = -1;
+	while (++i < t->b->size)
+		if (min == (*db)[i][6])
+			push_this = i;
+	i = -1;
+	set_push(t, db, push_this);
 }

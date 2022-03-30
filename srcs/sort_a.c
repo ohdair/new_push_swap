@@ -6,66 +6,61 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:28:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 17:47:14 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/30 22:35:31 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_push(t_pushswap *t, int **db)
+void	calculate_b(int *db, int b, int c, int d, int min)
 {
-	int	i;
-	int	min;
-	int	push_this;
-
-	i = 0;
-	min = db[i][6];
-	while (++i < t->b->size)
-		if (min > db[i][6])
-			min = db[i][6];
-	i = -1;
-	while (++i < t->b->size)
-		if (min == db[i][6])
-			push_this = i;
-
-	// i = 0;
-	// push_this = 0;
-	// min = db[i][6];
-	// while (++i < t->b->size)
-	// 	if (min > db[i][6])
-	// 	{
-	// 		min = db[i][6];
-	// 		push_this = i;
-	// 	}
-
-	printf("push this : %d\n", push_this);
-}
-
-void	calculate(int *db)
-{
-	db[4] = ft_min((float)db[0], (float)db[2]);
-	db[0] -= db[4];
-	db[2] -= db[4];
-	db[5] = ft_min((float)db[1], (float)db[3]);
-	db[1] -= db[5];
-	db[3] -= db[5];
-	db[6] = ft_min((float)(db[0] + db[2] + db[4]), \
-	(float)(db[1] + db[3] + db[5]));
-	if (db[0] + db[2] + db[4] < db[1] + db[3] + db[5])
+	if (min == b)
 	{
-		db[1] = 0;
-		db[3] = 0;
-		db[5] = 0;
-	}
-	else
-	{
+
+		db[5] = ft_min((float)db[1], (float)db[3]);
+		db[3] -= db[5];
+		db[1] -= db[5];
 		db[0] = 0;
 		db[2] = 0;
-		db[4] = 0;
+	}
+	else if (min == c)
+	{
+		db[1] = 0;
+		db[2] = 0;
+	}
+	else if (min == d)
+	{
+		db[0] = 0;
+		db[3] = 0;
 	}
 }
 
-static void	dest_me(t_pushswap *t, int **db, t_node *me, int my_location)
+void	calculate_a(int *db)
+{
+	t_value *v;
+
+	v = (t_value *)malloc(sizeof(t_value));
+	v->a = db[0] + db[2] - ft_min((float)db[0], (float)db[2]);
+	v->b = db[1] + db[3] - ft_min((float)db[1], (float)db[3]);
+	v->c = db[0] + db[3];
+	v->d = db[1] + db[2];
+	v->min = ft_min(ft_min(ft_min((float)v->a, (float)v->b), (float)v->c),\
+	 (float)v->d);
+	if (v->min == v->a)
+	{
+		db[4] = ft_min((float)db[0], (float)db[2]);
+		db[2] -= db[4];
+		db[0] -= db[4];
+		db[1] = 0;
+		db[3] = 0;
+	}
+	else
+		calculate_b(db, v->b, v->c, v->d, v->min);
+	db[6] = db[0] + db[1] + db[2] + db[3] + db[4] + db[5];
+	free(v);
+}
+
+void	dest_me(t_pushswap *t, int ***db, t_node *me, int my_location)
 {
 	t_node	*com;
 	float	*array;
@@ -89,12 +84,12 @@ static void	dest_me(t_pushswap *t, int **db, t_node *me, int my_location)
 	while (dest < t->a->size)
 		if (array[++dest] == min)
 			break ;
-	db[my_location][0] = dest;
-	db[my_location][1] = t->a->size - dest;
+	(*db)[my_location][0] = dest;
+	(*db)[my_location][1] = t->a->size - dest;
 	free(array);
 }
 
-static void	find_me(t_pushswap *t, int **db)
+static void	find_me(t_pushswap *t, int ***db)
 {
 	t_node	*me;
 	int		my_location;
@@ -103,12 +98,13 @@ static void	find_me(t_pushswap *t, int **db)
 	my_location = -1;
 	while (++my_location < t->b->size)
 	{
-		db[my_location][2] = my_location;
-		db[my_location][3] = t->b->size - my_location;
+		(*db)[my_location][2] = my_location;
+		(*db)[my_location][3] = t->b->size - my_location;
 		dest_me(t, db, me, my_location);
-		calculate(db[my_location]);
+		calculate_a((*db)[my_location]);
 		me = me->next;
 	}
+	return ;
 }
 
 void	b_to_a(t_pushswap *t)
@@ -117,9 +113,12 @@ void	b_to_a(t_pushswap *t)
 	int	i;
 
 	db = database(t);
-	reset_db(t, &db);
-	find_me(t, db);
-	do_push(t, db);
+	while (t->b->size)
+	{
+		reset_db(t, &db);
+		find_me(t, &db);
+		get_push(t, &db);
+	}
 	i = -1;
 	while (++i < t->b->size)
 	{
