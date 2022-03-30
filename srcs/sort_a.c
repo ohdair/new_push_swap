@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:28:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 15:36:10 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:47:14 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ static void	find_me(t_pushswap *t, int **db)
 	my_location = -1;
 	while (++my_location < t->b->size)
 	{
-		dest_me(t, db, me, my_location);
 		db[my_location][2] = my_location;
 		db[my_location][3] = t->b->size - my_location;
+		dest_me(t, db, me, my_location);
 		calculate(db[my_location]);
 		me = me->next;
 	}
@@ -117,9 +117,9 @@ void	b_to_a(t_pushswap *t)
 	int	i;
 
 	db = database(t);
-	// reset_db(t, db);
+	reset_db(t, &db);
 	find_me(t, db);
-	// do_push(t, db);
+	do_push(t, db);
 	i = -1;
 	while (++i < t->b->size)
 	{

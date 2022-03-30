@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:04:23 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 12:05:41 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:34:24 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	a_to_b(t_pushswap *t);
 void	b_to_a(t_pushswap *t);
 
 /*
-**	main
+**	sort_utils
 */
-void	reset_db(t_pushswap *t, int **db);
+void	reset_db(t_pushswap *t, int ***db);
 void	delete_db(t_pushswap *t, int **db);
 int		ft_min(float a, float b);
 int		**database(t_pushswap *t);

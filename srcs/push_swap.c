@@ -6,12 +6,11 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 13:03:40 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:41:19 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	init_list(t_list *ls)
 {
@@ -64,7 +63,7 @@ int	main(int argc, char **argv)
 		a_to_b 확인 까지 완료
 	*/
 	reset_list(t->a);
-	printf("\n------up : a / down : b------\n");
+	// printf("\n------up : a / down : b------\n");
 	if (t->b->size)
 		reset_list(t->b);
 	return (0);

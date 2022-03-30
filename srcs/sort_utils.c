@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:26:10 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 15:34:32 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:46:01 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	delete_db(t_pushswap *t, int **db)
 	free(db);
 }
 
-void	reset_db(t_pushswap *t, int **db)
+void	reset_db(t_pushswap *t, int ***db)
 {
 	int	i;
 	int	j;
@@ -30,11 +30,11 @@ void	reset_db(t_pushswap *t, int **db)
 	i = -1;
 	while (++i < t->b->size)
 	{
-		db[i] = 0;
 		j = -1;
 		while (++j < 7)
-			db[i][j] = 0;
+			(*db)[i][j] = 0;
 	}
+	return ;
 }
 
 int	**database(t_pushswap *t)
@@ -47,7 +47,7 @@ int	**database(t_pushswap *t)
 	if (!array)
 		error(0);
 	i = -1;
-	while (++i < t->a->size)
+	while (++i < t->b->size)
 	{
 		array[i] = (int *)malloc(sizeof(int) * 7);
 		if (!array[i])
