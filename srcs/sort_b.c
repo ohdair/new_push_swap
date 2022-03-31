@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:24:19 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:09:07 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:36:39 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	last_sort(t_pushswap *t)
 	while (++i < t->a->size)
 	{
 		if (t->min == cur->data)
-			break;
+			break ;
 		cur = cur->next;
 	}
 	if (i < t->a->size - i)
@@ -56,7 +56,7 @@ void	last_sort(t_pushswap *t)
 			call_utils(t, "rra");
 }
 
-void	set_push(t_pushswap *t, int ***db, int this)
+static void	set_push(t_pushswap *t, int ***db, int this)
 {
 	while ((*db)[this][0]-- > 0)
 		call_utils(t, "ra");

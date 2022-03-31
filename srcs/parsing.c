@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 10:12:46 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:38:11 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ static int	ft_split(char *argv, t_pushswap *t)
 	return (1);
 }
 
-// ft_destroy(t); -> write 함수에 넣을 것
 int	parsing_arg(char **argv, int argc, t_pushswap *t)
 {
 	int	i;

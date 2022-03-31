@@ -6,12 +6,11 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:08:08 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:33:35 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked.h"
-#include <stdio.h>
 
 void	pushNode(t_list *ls, t_node *newNode)
 {

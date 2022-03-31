@@ -6,13 +6,13 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:26:10 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 10:41:42 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:26:35 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		check_sort(t_pushswap *t)
+int	check_sort(t_pushswap *t)
 {
 	t_node	*cur;
 	int		i;
@@ -23,7 +23,7 @@ int		check_sort(t_pushswap *t)
 	cur = t->a->head;
 	t->min = cur->data;
 	t->max = cur->data;
-	while (++i < t->a->size - 1)
+	while (++i < t->a->size)
 	{
 		if (t->min > cur->data)
 			t->min = cur->data;

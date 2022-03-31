@@ -6,12 +6,11 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:15:57 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 10:37:51 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 12:12:48 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	get_index(t_pushswap *t, int *array)
 {
@@ -21,11 +20,11 @@ static void	get_index(t_pushswap *t, int *array)
 	int	temp;
 
 	arr = array;
-	i = 0;
-	while (i < t->a->size)
+	i = -1;
+	while (++i < t->a->size)
 	{
-		j = 0;
-		while (j < i)
+		j = -1;
+		while (++j < i)
 		{
 			if (arr[j] > arr[i])
 			{
@@ -33,9 +32,9 @@ static void	get_index(t_pushswap *t, int *array)
 				arr[j] = arr[i];
 				arr[i] = temp;
 			}
-			j++;
+			else if (arr[j] == arr[i])
+				error(2);
 		}
-		i++;
 	}
 	t->mid = arr[t->a->size / 2];
 }

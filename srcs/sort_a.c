@@ -6,46 +6,45 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:28:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:09:19 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:34:45 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	calculate_b(int *db, int b, int c, int d, int min)
+static void	calculate_b(int *db, t_value *v)
 {
-	if (min == b)
+	if (v->min == v->b)
 	{
-
 		db[5] = ft_min((float)db[1], (float)db[3]);
 		db[3] -= db[5];
 		db[1] -= db[5];
 		db[0] = 0;
 		db[2] = 0;
 	}
-	else if (min == c)
+	else if (v->min == v->c)
 	{
 		db[1] = 0;
 		db[2] = 0;
 	}
-	else if (min == d)
+	else if (v->min == v->d)
 	{
 		db[0] = 0;
 		db[3] = 0;
 	}
 }
 
-void	calculate_a(int *db)
+static void	calculate_a(int *db)
 {
-	t_value *v;
+	t_value	*v;
 
 	v = (t_value *)malloc(sizeof(t_value));
 	v->a = db[0] + db[2] - ft_min((float)db[0], (float)db[2]);
 	v->b = db[1] + db[3] - ft_min((float)db[1], (float)db[3]);
 	v->c = db[0] + db[3];
 	v->d = db[1] + db[2];
-	v->min = ft_min(ft_min(ft_min((float)v->a, (float)v->b), (float)v->c),\
-	 (float)v->d);
+	v->min = ft_min(ft_min(ft_min((float)v->a, (float)v->b), (float)v->c), \
+	(float)v->d);
 	if (v->min == v->a)
 	{
 		db[4] = ft_min((float)db[0], (float)db[2]);
@@ -55,12 +54,12 @@ void	calculate_a(int *db)
 		db[3] = 0;
 	}
 	else
-		calculate_b(db, v->b, v->c, v->d, v->min);
+		calculate_b(db, v);
 	db[6] = db[0] + db[1] + db[2] + db[3] + db[4] + db[5];
 	free(v);
 }
 
-void	dest_me(t_pushswap *t, int ***db, t_node *me, int my_location)
+static void	dest_me(t_pushswap *t, int ***db, t_node *me, int my_location)
 {
 	t_node	*com;
 	float	*array;

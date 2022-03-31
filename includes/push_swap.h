@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:04:23 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:00:20 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:34:11 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,6 @@ void	call_utils(t_pushswap *t, char *alpha);
 void	ss(t_pushswap *t);
 void	rr(t_pushswap *t);
 void	rrr(t_pushswap *t);
-
-/*
-**	check
-*/
-void	check_short(t_pushswap *t);
 
 /*
 **	parsing
