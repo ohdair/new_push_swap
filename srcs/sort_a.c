@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:28:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:34:45 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:19:10 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	dest_me(t_pushswap *t, int ***db, t_node *me, int my_location)
 			min = ft_min(array[dest], (float)min);
 		com = com->next;
 	}
-	while (dest >= 0)
+	while (dest > 0)
 		if (array[--dest] == min)
 			break ;
 	(*db)[my_location][0] = dest;

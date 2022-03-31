@@ -6,11 +6,12 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:33:35 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:20:58 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked.h"
+#include <stdio.h>
 
 void	pushNode(t_list *ls, t_node *newNode)
 {
@@ -96,10 +97,12 @@ void	reset_list(t_list *ls)
 	while (cur != ls->tail)
 	{
 		tmp = cur->next;
+		printf("%d ", cur->data);
 		free(cur);
 		cur = tmp;
 		ls->size--;
 	}
+	printf("%d\n", cur->data);
 	free(cur);
 	ls->size--;
 	ls->head = NULL;

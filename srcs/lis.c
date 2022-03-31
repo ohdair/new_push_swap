@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:15:57 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 12:12:48 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:54:10 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	get_lis(t_pushswap *t)
 	int	i;
 	int	j;
 
-	lis = malloc(sizeof(int) * (t->a->size));
+	lis = (int *)malloc(sizeof(int) * (t->a->size));
 	if (!lis)
 		error(0);
 	array = get_array(t);
