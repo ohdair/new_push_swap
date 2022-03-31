@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:24:19 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 22:34:27 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:09:07 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,29 @@ void	a_to_b(t_pushswap *t)
 	}
 }
 
+void	last_sort(t_pushswap *t)
+{
+	t_node	*cur;
+	int		i;
+
+	cur = t->a->head;
+	i = -1;
+	while (++i < t->a->size)
+	{
+		if (t->min == cur->data)
+			break;
+		cur = cur->next;
+	}
+	if (i < t->a->size - i)
+		while (--i >= 0)
+			call_utils(t, "ra");
+	else
+		while (t->a->size - (++i) >= 0)
+			call_utils(t, "rra");
+}
+
 void	set_push(t_pushswap *t, int ***db, int this)
 {
-	printf("%d : ", this);
 	while ((*db)[this][0]-- > 0)
 		call_utils(t, "ra");
 	while ((*db)[this][1]-- > 0)

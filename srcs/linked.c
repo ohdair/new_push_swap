@@ -6,12 +6,11 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 15:45:14 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:08:08 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked.h"
-// !!!!!!!!!!!!!!!!!!!!!!   임시 헤더 파일 무조건 지울 것   !!!!!!!!!!!!!!!!!!!!!!
 #include <stdio.h>
 
 void	pushNode(t_list *ls, t_node *newNode)
@@ -95,18 +94,13 @@ void	reset_list(t_list *ls)
 	t_node	*tmp;
 
 	cur = ls->head;
-	printf("HEAD : %d\n", cur->data);
-	printf("SIZE : %d\n", ls->size);
-	printf("TAIL : %d\n", ls->tail->data);
 	while (cur != ls->tail)
 	{
 		tmp = cur->next;
-		printf("%d ", cur->data);
 		free(cur);
 		cur = tmp;
 		ls->size--;
 	}
-	printf("%d", cur->data);
 	free(cur);
 	ls->size--;
 	ls->head = NULL;

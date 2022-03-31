@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:28:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 22:35:31 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:09:19 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,8 @@ void	dest_me(t_pushswap *t, int ***db, t_node *me, int my_location)
 			min = ft_min(array[dest], (float)min);
 		com = com->next;
 	}
-	dest = -1;
-	while (dest < t->a->size)
-		if (array[++dest] == min)
+	while (dest >= 0)
+		if (array[--dest] == min)
 			break ;
 	(*db)[my_location][0] = dest;
 	(*db)[my_location][1] = t->a->size - dest;
@@ -110,7 +109,6 @@ static void	find_me(t_pushswap *t, int ***db)
 void	b_to_a(t_pushswap *t)
 {
 	int	**db;
-	int	i;
 
 	db = database(t);
 	while (t->b->size)
@@ -119,16 +117,6 @@ void	b_to_a(t_pushswap *t)
 		find_me(t, &db);
 		get_push(t, &db);
 	}
-	i = -1;
-	while (++i < t->b->size)
-	{
-		printf("%d번째 : %d ", i, db[i][0]);
-		printf("%d ", db[i][1]);
-		printf("%d ", db[i][2]);
-		printf("%d ", db[i][3]);
-		printf("%d ", db[i][4]);
-		printf("%d ", db[i][5]);
-		printf(" = %d\n", db[i][6]);
-	}
+	last_sort(t);
 	delete_db(t, db);
 }

@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:15:57 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 15:23:41 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 10:37:51 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static void	get_index(t_pushswap *t, int *array)
 		i++;
 	}
 	t->mid = arr[t->a->size / 2];
-	t->min = arr[0];
-	t->max = arr[t->a->size - 1];
 }
 
 int	ft_max(int a, int b)

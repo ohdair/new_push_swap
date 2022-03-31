@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 16:41:19 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:05:19 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	error(int code)
 		write(1, "There was a problem while malloc creating\n", 42);
 	else if (code == 1)
 		write(1, "There was a problem while parsing\n", 35);
-	else
-		write(1, "error\n", 6);
+	write(1, "Error\n", 6);
 	exit(1);
 }
 
@@ -51,19 +50,11 @@ int	main(int argc, char **argv)
 		error(0);
 	if (!parsing_arg(argv, argc, t))
 		error(1);
+	// check_short(t);
 	get_lis(t);
 	a_to_b(t);
 	b_to_a(t);
-	/*
-	현재 진행상황 : 화요일 13:24
-		1. array 생성 max, min, mid 값 산출
-		2. array 이용해서 lis 생성
-		3. lis 이용해서 a_to_b 함수 완료
-	테스트
-		a_to_b 확인 까지 완료
-	*/
 	reset_list(t->a);
-	// printf("\n------up : a / down : b------\n");
 	if (t->b->size)
 		reset_list(t->b);
 	return (0);

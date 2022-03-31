@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:04:23 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 22:31:03 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:00:20 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "linked.h"
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_value
 {
@@ -56,10 +55,7 @@ void	rrr(t_pushswap *t);
 /*
 **	check
 */
-void	check_ans(t_list *A, t_list *B, char alpha);
-int		check_A(t_list *A, t_list *B, int max);
-int		check_B(t_list *B, t_list *A);
-void	check(t_list *A, t_list *B, int max);
+void	check_short(t_pushswap *t);
 
 /*
 **	parsing
@@ -78,6 +74,7 @@ int		ft_max(int a, int b);
 void	a_to_b(t_pushswap *t);
 void	b_to_a(t_pushswap *t);
 void	get_push(t_pushswap *t, int ***db);
+void	last_sort(t_pushswap *t);
 
 /*
 **	sort_utils
@@ -86,7 +83,7 @@ void	reset_db(t_pushswap *t, int ***db);
 void	delete_db(t_pushswap *t, int **db);
 int		ft_min(float a, float b);
 int		**database(t_pushswap *t);
-int		ft_abs(int a, int b);
+int		check_sort(t_pushswap *t);
 
 /*
 **	main

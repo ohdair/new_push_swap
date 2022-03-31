@@ -6,24 +6,34 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:26:10 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/30 21:18:27 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/31 10:41:42 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_abs(int a, int b)
+int		check_sort(t_pushswap *t)
 {
-	int	flag;
+	t_node	*cur;
+	int		i;
+	int		flag;
 
-	flag = -1;
-	if (a - b < -2147483648)
-		return (-2147483648);
-	if (a - b < 0)
-		return ((a - b) * flag);
-	if (a - b > 2147483647)
-		return (2147483647);
-	return (a - b);
+	i = -1;
+	flag = 0;
+	cur = t->a->head;
+	t->min = cur->data;
+	t->max = cur->data;
+	while (++i < t->a->size - 1)
+	{
+		if (t->min > cur->data)
+			t->min = cur->data;
+		if (t->max < cur->data)
+			t->max = cur->data;
+		if (cur->data > cur->next->data)
+			flag = 1;
+		cur = cur->next;
+	}
+	return (flag);
 }
 
 void	delete_db(t_pushswap *t, int **db)
