@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 14:55:24 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:55:54 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,11 @@ int	parsing_arg(char **argv, int argc, t_pushswap *t)
 	{
 		if (!ft_split(argv[i], t))
 		{
-			write(1, "error", 5);
+			write(1, "Error", 5);
 			return (0);
 		}
 	}
-	if (!check_sort(t))
+	if (!t->a->size || !check_sort(t))
 		exit(0);
 	return (1);
 }

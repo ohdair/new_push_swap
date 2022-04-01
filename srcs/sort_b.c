@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:24:19 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 15:43:38 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:37:44 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	short_a(t_pushswap *t)
 	v.a = 2147483647;
 	v.b = -2147483648;
 	v.c = -1;
+	while (t->a->size > 3)
+		reduce_factor(t);
 	cur = t->a->head;
 	while (++v.c < t->a->size)
 	{
@@ -27,12 +29,14 @@ void	short_a(t_pushswap *t)
 		v.b = ft_max(cur->data, v.b);
 		cur = cur->next;
 	}
-	if (cur->data == v.b)
+	if (cur->data == v.b && t->a->size == 3)
 		call_utils(t, "ra");
-	if (cur->next->data == v.b)
+	if (cur->next->data == v.b && t->a->size == 3)
 		call_utils(t, "rra");
-	if (v.a == t->a->head->next->data)
+	if (v.a == t->a->head->next->data && t->a->size == 3)
 		call_utils(t, "sa");
+	while (t->b->size > 0)
+		call_utils(t, "pa");
 }
 
 void	a_to_b(t_pushswap *t)

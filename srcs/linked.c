@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 15:00:46 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:31:23 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,11 @@ void	reset_list(t_list *ls)
 	while (cur != ls->tail)
 	{
 		tmp = cur->next;
-		free(cur);
+		// free(cur);
 		cur = tmp;
 		ls->size--;
 	}
-	free(cur);
+	// free(cur);
 	ls->size--;
 	ls->head = NULL;
 	ls->tail = NULL;

@@ -6,37 +6,35 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:15:57 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 14:53:32 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 21:06:05 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	get_index(t_pushswap *t, int *array)
+void	get_index(t_pushswap *t, int *array)
 {
 	int	*arr;
-	int	i;
-	int	j;
-	int	temp;
+	t_value	v;
 
 	arr = array;
-	i = -1;
-	while (++i < t->a->size)
+	v.a = -1;
+	while (++v.a < t->a->size)
 	{
-		j = -1;
-		while (++j < i)
+		v.b = -1;
+		while (++v.b < v.a)
 		{
-			if (arr[j] > arr[i])
+			if (arr[v.b] > arr[v.a])
 			{
-				temp = arr[j];
-				arr[j] = arr[i];
-				arr[i] = temp;
+				v.c = arr[v.b];
+				arr[v.b] = arr[v.a];
+				arr[v.a] = v.c;
 			}
-			else if (arr[j] == arr[i])
+			if (arr[v.b] == arr[v.a])
 				error(2);
 		}
 	}
-	t->mid = arr[t->a->size / 2];
+	t->mid = arr[(t->a->size - 1) / 2];
 }
 
 int	ft_max(int a, int b)
@@ -46,7 +44,7 @@ int	ft_max(int a, int b)
 	return (b);
 }
 
-static int	*get_array(t_pushswap *t)
+int	*get_array(t_pushswap *t)
 {
 	t_node	*cur;
 	int		*array;

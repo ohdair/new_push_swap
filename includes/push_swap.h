@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:04:23 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 13:45:30 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 19:18:09 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include "linked.h"
 # include <unistd.h>
+
+typedef struct s_stack
+{
+	int		*stack;
+	int		top;
+}				t_stack;
 
 typedef struct s_value
 {
@@ -39,6 +45,7 @@ typedef struct s_pushswap
 /*
 **	utils_a
 */
+void	reduce_factor(t_pushswap *t);
 int		swap(t_pushswap *t, char alpha);
 int		rotate(t_pushswap *t, char alpha);
 int		reverse_rotate(t_pushswap *t, char alpha);
@@ -60,6 +67,8 @@ int		parsing_arg(char **argv, int argc, t_pushswap *t);
 /*
 **	lis
 */
+void	get_index(t_pushswap *t, int *array);
+int		*get_array(t_pushswap *t);
 int		get_lis(t_pushswap *t);
 int		ft_max(int a, int b);
 

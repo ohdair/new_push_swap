@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 15:19:18 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:31:56 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,16 @@ int	main(int argc, char **argv)
 		error(0);
 	if (!parsing_arg(argv, argc, t))
 		error(1);
-	short_a(t);
-	if (t->a->size > 3)
+	if (t->a->size <= 5)
+		short_a(t);
+	if (t->a->size > 5)
 	{
 		get_lis(t);
 		a_to_b(t);
 		b_to_a(t);
 	}
-	reset_list(t->a);
-	if (t->b->size)
-		reset_list(t->b);
+	// reset_list(t->a);
+	// if (t->b->size)
+	// 	reset_list(t->b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:26:10 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 15:15:52 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 21:12:38 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_sort(t_pushswap *t)
 	int		flag;
 
 	i = -1;
-	flag = 0;
+	flag = 1;
 	cur = t->a->head;
 	t->min = cur->data;
 	t->max = cur->data;
@@ -29,10 +29,12 @@ int	check_sort(t_pushswap *t)
 			t->min = cur->data;
 		if (t->max < cur->data)
 			t->max = cur->data;
-		if (cur->data > cur->next->data)
-			flag = 1;
+		if (cur->data < cur->next->data)
+			flag += 1;
 		cur = cur->next;
 	}
+	if (flag == t->a->size)
+		flag = 0;
 	return (flag);
 }
 

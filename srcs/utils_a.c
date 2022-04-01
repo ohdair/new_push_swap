@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:21:29 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 15:42:17 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 18:56:12 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,43 @@ int	swap(t_pushswap *t, char alpha)
 	if (alpha == 'a')
 	{
 		tmp = t->a->head->next;
+		t->a->tail->next = tmp;
 		t->a->head->next = tmp->next;
-		tmp->next->prev = t->a->head;
 		tmp->next = t->a->head;
-		tmp->prev = t->a->head->prev;
+		t->a->head->next->prev = t->a->head;
+		tmp->prev = t->a->tail;
 		t->a->head->prev = tmp;
-		tmp->prev->next = tmp;
 		t->a->head = tmp;
 	}
 	else if (alpha == 'b')
 	{
 		tmp = t->b->head->next;
+		t->b->tail->next = tmp;
 		t->b->head->next = tmp->next;
-		tmp->next->prev = t->b->head;
 		tmp->next = t->b->head;
-		tmp->prev = t->b->head->prev;
+		t->b->head->next->prev = t->b->head;
+		tmp->prev = t->b->tail;
 		t->b->head->prev = tmp;
-		tmp->prev->next = tmp;
 		t->b->head = tmp;
 	}
 	return (1);
+}
+
+void	reduce_factor(t_pushswap *t)
+{
+	t_node	*node;
+	int		*array;
+
+	array = get_array(t);
+	get_index(t, array);
+	while (t->a->size > 3)
+	{
+		node = t->a->head;
+		if (node->data < t->mid)
+			call_utils(t, "pb");
+		else
+			call_utils(t, "ra");
+	}
+	if (t->b->head->data < t->b->head->next->data)
+		call_utils(t, "sb");
 }
