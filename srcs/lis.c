@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:15:57 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 21:06:05 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 22:02:38 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	get_index(t_pushswap *t, int *array)
 {
-	int	*arr;
 	t_value	v;
+	int		*arr;
 
 	arr = array;
 	v.a = -1;

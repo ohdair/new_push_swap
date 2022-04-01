@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:21:29 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 21:49:29 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 22:00:27 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,9 @@ int	swap(t_pushswap *t, char alpha)
 	}
 	else if (alpha == 'b')
 	{
-		write(1, "first\n", 6);
 		first = delNode(t->b);
-		write(1, "second\n", 7);
 		second = delNode(t->b);
-		write(1, "pu.fi\n", 6);
 		pushNode(t->b, second);
-		write(1, "pu.se\n", 6);
 		pushNode(t->b, first);
 	}
 	return (1);
@@ -111,5 +107,5 @@ void	reduce_factor(t_pushswap *t)
 			call_utils(t, "ra");
 	}
 	if (t->b->head->data < t->b->head->next->data)
-		call_utils(t, "sb");
+		call_utils(t, "rb");
 }
