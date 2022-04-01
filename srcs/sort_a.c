@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:28:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 18:19:10 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 13:22:31 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,32 +59,34 @@ static void	calculate_a(int *db)
 	free(v);
 }
 
+// new!! debug check
 static void	dest_me(t_pushswap *t, int ***db, t_node *me, int my_location)
 {
 	t_node	*com;
-	float	*array;
-	int		dest;
-	int		min;
+	t_value	v;
 
 	com = t->a->head;
-	dest = -1;
-	min = 2147483647;
-	array = (float *)malloc(sizeof(float) * t->a->size);
-	if (!array)
-		error(0);
-	while (++dest < t->a->size)
+	v.a = -1;
+	v.b = 0;
+	v.min = 2147483647;
+	v.c = -2147483648;
+	while (++v.a < t->a->size)
 	{
-		array[dest] = (float)(com->data - me->data);
-		if (array[dest] > 0)
-			min = ft_min(array[dest], (float)min);
+		v.min = ft_min((float)com->data, (float)v.min);
+		v.c = ft_max(com->data, v.c);
 		com = com->next;
 	}
-	while (dest > 0)
-		if (array[--dest] == min)
-			break ;
-	(*db)[my_location][0] = dest;
-	(*db)[my_location][1] = t->a->size - dest;
-	free(array);
+	v.a = -1;
+	while (++v.a < t->a->size - 1)
+	{
+		if ((com->data < me->data && com->next->data > me->data) || \
+		 (com->data < me->data && com->next->data == v.min) || \
+		 (com->data == v.c && com->next->data > me->data))
+			v.b = v.a + 1;
+		com = com->next;
+	}
+	(*db)[my_location][0] = v.b;
+	(*db)[my_location][1] = t->a->size - v.b;
 }
 
 static void	find_me(t_pushswap *t, int ***db)

@@ -6,11 +6,34 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:24:19 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:36:39 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 14:53:27 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	short_a(t_pushswap *t)
+{
+	t_node	*cur;
+	t_value	v;
+
+	v.a = 2147483647;
+	v.b = -2147483648;
+	v.c = -1;
+	cur = t->a->head;
+	while (++v.c < t->a->size)
+	{
+		v.a = ft_min((float)cur->data, (float)v.a);
+		v.b = ft_max(cur->data, v.b);
+		cur = cur->next;
+	}
+	if (cur->data == v.b)
+		call_utils(t, "ra");
+	if (cur->next->data == v.b)
+		call_utils(t, "rra");
+	if (cur->data != v.b && v.a == cur->next->data)
+		call_utils(t, "sa");
+}
 
 void	a_to_b(t_pushswap *t)
 {

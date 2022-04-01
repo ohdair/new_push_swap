@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:23:45 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 14:52:18 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(int argc, char **argv)
 		error(0);
 	if (!parsing_arg(argv, argc, t))
 		error(1);
+	// short_a(t);
 	get_lis(t);
 	a_to_b(t);
 	b_to_a(t);
