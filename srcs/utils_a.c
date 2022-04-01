@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:21:29 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 10:43:00 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:42:17 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,24 @@ int	swap(t_pushswap *t, char alpha)
 	if (alpha == 'a')
 	{
 		tmp = t->a->head->next;
-		t->a->head->next = t->a->head->next->next;
-		t->a->head->next->next->prev = t->a->head;
+		t->a->head->next = tmp->next;
+		tmp->next->prev = t->a->head;
 		tmp->next = t->a->head;
 		tmp->prev = t->a->head->prev;
-		pushNode(t->a, tmp);
-		t->a->size--;
+		t->a->head->prev = tmp;
+		tmp->prev->next = tmp;
+		t->a->head = tmp;
 	}
 	else if (alpha == 'b')
 	{
 		tmp = t->b->head->next;
-		t->b->head->next = t->b->head->next->next;
-		t->b->head->next->next->prev = t->b->head;
+		t->b->head->next = tmp->next;
+		tmp->next->prev = t->b->head;
 		tmp->next = t->b->head;
 		tmp->prev = t->b->head->prev;
-		pushNode(t->b, tmp);
-		t->b->size--;
+		t->b->head->prev = tmp;
+		tmp->prev->next = tmp;
+		t->b->head = tmp;
 	}
 	return (1);
 }

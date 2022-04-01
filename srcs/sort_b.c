@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:24:19 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 14:53:27 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:43:38 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	short_a(t_pushswap *t)
 		call_utils(t, "ra");
 	if (cur->next->data == v.b)
 		call_utils(t, "rra");
-	if (cur->data != v.b && v.a == cur->next->data)
+	if (v.a == t->a->head->next->data)
 		call_utils(t, "sa");
 }
 
