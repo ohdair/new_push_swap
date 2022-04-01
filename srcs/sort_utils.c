@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:26:10 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 21:12:38 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 21:42:05 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int	check_sort(t_pushswap *t)
 			flag += 1;
 		cur = cur->next;
 	}
-	if (flag == t->a->size)
-		flag = 0;
 	return (flag);
 }
 

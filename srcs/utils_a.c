@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:21:29 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 18:56:12 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 21:49:29 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,29 +71,26 @@ int	reverse_rotate(t_pushswap *t, char alpha)
 
 int	swap(t_pushswap *t, char alpha)
 {
-	t_node	*tmp;
+	t_node	*first;
+	t_node	*second;
 
 	if (alpha == 'a')
 	{
-		tmp = t->a->head->next;
-		t->a->tail->next = tmp;
-		t->a->head->next = tmp->next;
-		tmp->next = t->a->head;
-		t->a->head->next->prev = t->a->head;
-		tmp->prev = t->a->tail;
-		t->a->head->prev = tmp;
-		t->a->head = tmp;
+		first = delNode(t->a);
+		second = delNode(t->a);
+		pushNode(t->a, second);
+		pushNode(t->a, first);
 	}
 	else if (alpha == 'b')
 	{
-		tmp = t->b->head->next;
-		t->b->tail->next = tmp;
-		t->b->head->next = tmp->next;
-		tmp->next = t->b->head;
-		t->b->head->next->prev = t->b->head;
-		tmp->prev = t->b->tail;
-		t->b->head->prev = tmp;
-		t->b->head = tmp;
+		write(1, "first\n", 6);
+		first = delNode(t->b);
+		write(1, "second\n", 7);
+		second = delNode(t->b);
+		write(1, "pu.fi\n", 6);
+		pushNode(t->b, second);
+		write(1, "pu.se\n", 6);
+		pushNode(t->b, first);
 	}
 	return (1);
 }

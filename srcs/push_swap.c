@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 20:31:56 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 21:45:45 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	main(int argc, char **argv)
 		a_to_b(t);
 		b_to_a(t);
 	}
-	// reset_list(t->a);
-	// if (t->b->size)
-	// 	reset_list(t->b);
+	reset_list(t->a);
+	if (t->b->size)
+		reset_list(t->b);
 	return (0);
 }
