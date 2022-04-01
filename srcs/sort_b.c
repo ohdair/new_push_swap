@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:24:19 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 17:37:44 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 22:14:27 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	short_a(t_pushswap *t)
 		v.b = ft_max(cur->data, v.b);
 		cur = cur->next;
 	}
-	if (cur->data == v.b && t->a->size == 3)
+	if ((cur->data == v.b && t->a->size == 3) || \
+		(t->a->size == 2 && cur->data == v.b))
 		call_utils(t, "ra");
 	if (cur->next->data == v.b && t->a->size == 3)
 		call_utils(t, "rra");

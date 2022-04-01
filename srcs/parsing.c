@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 20:55:54 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/01 22:16:44 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,19 @@ static int	ft_atoi(const char *str)
 		sign = -1;
 	if (*str == '-' || *str == '+')
 		str++;
+	if (*str == 0)
+		error(2);
 	while (*str != 0)
 	{
 		if (*str && '0' <= *str && *str <= '9')
+		{
 			nbr = (nbr * 10) + (*str++ - '0');
+			if ((nbr > 2147483647 && sign == 1) || (nbr > 2147483648 && sign == -1))
+				 error(2);
+		}
 		else
 			error(2);
 	}
-	if ((nbr > 2147483647 && sign == 1) || (nbr > 2147483648 && sign == -1))
-		error(2);
 	return ((int)(nbr * sign));
 }
 
