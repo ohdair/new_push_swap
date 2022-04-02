@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 15:03:47 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:22:50 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static int	is_space(char c)
 
 static int	ft_atoi(const char *str)
 {
-	long long	sign;
+	long long	si;
 	long long	nbr;
 
-	sign = 1;
+	si = 1;
 	nbr = 0;
 	while (*str && is_space(*str))
 		str++;
 	if (*str == '-')
-		sign = -1;
+		si = -1;
 	if (*str == '-' || *str == '+')
 		str++;
 	if (*str == 0)
@@ -39,7 +39,7 @@ static int	ft_atoi(const char *str)
 		if (*str && '0' <= *str && *str <= '9')
 		{
 			nbr = (nbr * 10) + (*str++ - '0');
-			if ((nbr > 2147483647 && sign == 1) || (nbr > 2147483648 && sign == -1))
+			if ((nbr > 2147483647 && si == 1) || (nbr > 2147483648 && si == -1))
 				 error(2);
 		}
 		else
