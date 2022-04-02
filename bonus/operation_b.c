@@ -1,39 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   operation_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 13:52:02 by jaewpark         ###   ########.fr       */
+/*   Created: 2022/04/02 14:13:09 by jaewpark          #+#    #+#             */
+/*   Updated: 2022/04/02 14:17:48 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ss(t_pushswap *t)
 {
-	t_pushswap	*t;
+	swap(t, 'a');
+	swap(t, 'b');
+}
 
-	if (argc < 2)
-		exit(1);
-	t = (t_pushswap *)malloc(sizeof(t_pushswap));
-	init_pushswap(t);
-	if (!t || !t->a || !t->b)
-		error(0);
-	if (!parsing_arg(argv, argc, t))
-		error(1);
-	if (t->a->size <= 5)
-		short_a(t);
-	if (t->a->size > 5)
+void	rr(t_pushswap *t)
+{
+	rotate(t, 'a');
+	rotate(t, 'b');
+}
+
+void	rrr(t_pushswap *t)
+{
+	reverse_rotate(t, 'a');
+	reverse_rotate(t, 'b');
+}
+
+int	ft_strcmp(char *a, char *b)
+{
+	while (*a != '\0' || *b != '\0')
 	{
-		get_lis(t);
-		a_to_b(t);
-		b_to_a(t);
+		if (*a > *b)
+			return (1);
+		else if (*a < *b)
+			return (-1);
+		else
+		{
+			a++;
+			b++;
+		}
 	}
-	reset_list(t->a);
-	if (t->b->size)
-		reset_list(t->b);
 	return (0);
 }

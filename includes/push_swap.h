@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:04:23 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 19:18:09 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/02 14:56:51 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "linked.h"
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -58,6 +59,7 @@ void	call_utils(t_pushswap *t, char *alpha);
 void	ss(t_pushswap *t);
 void	rr(t_pushswap *t);
 void	rrr(t_pushswap *t);
+int		ft_strcmp(char *a, char *b);
 
 /*
 **	parsing
@@ -92,6 +94,9 @@ int		check_sort(t_pushswap *t);
 /*
 **	main
 */
+void	init_pushswap(t_pushswap *t);
+void	init_list(t_list *ls);
 void	error(int code);
+int		is_sort(t_pushswap *t, int size);
 
 #endif

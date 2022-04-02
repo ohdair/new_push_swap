@@ -6,34 +6,11 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:08:33 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 19:20:06 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/02 13:26:32 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	***parsing_args(char **argv, int argc)
-{
-	char	***arg;
-	int		i;
-
-	arg = (char ***)malloc(sizeof(char **) * argc);
-	if (!arg)
-		return (0);
-	i = -1;
-	while (++i < argc - 1)
-	{
-		arg[i] = ft_split(argv[i + 1]);
-		if (!arg[i])
-		{
-			malloc_tri_free(arg);
-			return (0);
-		}
-	}
-	arg[i] = 0;
-	return (arg);
-}
-
 
 size_t	ft_strlen(const char *str)
 {

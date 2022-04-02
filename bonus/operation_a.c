@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_a.c                                          :+:      :+:    :+:   */
+/*   operation_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 09:21:29 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 15:19:13 by jaewpark         ###   ########.fr       */
+/*   Created: 2022/04/02 14:08:21 by jaewpark          #+#    #+#             */
+/*   Updated: 2022/04/02 15:19:59 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@ int	push(t_pushswap *t, char alpha)
 	{
 		tmp = delNode(t->b);
 		pushNode(t->a, tmp);
-		write(1, "pa\n", 3);
 	}
 	else if (alpha == 'b')
 	{
 		tmp = delNode(t->a);
 		pushNode(t->b, tmp);
-		write(1, "pb\n", 3);
 	}
 	return (1);
 }
@@ -98,21 +96,28 @@ int	swap(t_pushswap *t, char alpha)
 	return (1);
 }
 
-void	reduce_factor(t_pushswap *t)
+void	call_utils(t_pushswap *t, char *alpha)
 {
-	t_node	*node;
-	int		*array;
-
-	array = get_array(t);
-	get_index(t, array);
-	while (t->a->size > 3)
-	{
-		node = t->a->head;
-		if (node->data < t->mid)
-			call_utils(t, "pb");
-		else
-			call_utils(t, "ra");
-	}
-	if (t->b->head->data < t->b->head->next->data)
-		call_utils(t, "rb");
+	if (ft_strcmp(alpha, "sa") == 0)
+		swap(t, 'a');
+	if (ft_strcmp(alpha, "sb") == 0)
+		swap(t, 'b');
+	if (ft_strcmp(alpha, "ra") == 0)
+		rotate(t, 'a');
+	if (ft_strcmp(alpha, "rb") == 0)
+		rotate(t, 'b');
+	if (ft_strcmp(alpha, "rra") == 0)
+		reverse_rotate(t, 'a');
+	if (ft_strcmp(alpha, "rrb") == 0)
+		reverse_rotate(t, 'b');
+	if (ft_strcmp(alpha, "ss") == 0)
+		ss(t);
+	if (ft_strcmp(alpha, "rr") == 0)
+		rr(t);
+	if (ft_strcmp(alpha, "rrr") == 0)
+		rrr(t);
+	if (ft_strcmp(alpha, "pa") == 0)
+		push(t, 'a');
+	if (ft_strcmp(alpha, "pb") == 0)
+		push(t, 'b');
 }

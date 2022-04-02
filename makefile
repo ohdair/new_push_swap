@@ -6,7 +6,7 @@
 #    By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/01 19:11:09 by jaewpark          #+#    #+#              #
-#    Updated: 2022/04/01 19:59:10 by jaewpark         ###   ########.fr        #
+#    Updated: 2022/04/02 14:21:51 by jaewpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,19 +32,24 @@ SRC_FILES = push_swap.c \
 			sort_a.c \
 			sort_b.c \
 			sort_utils.c \
+			init.c \
 
 BNS_FILES = checker.c \
 			get_next_line_util.c \
 			get_next_line.c \
-			operation.c \
+			operation_a.c \
+			operation_b.c \
+			init.c \
+			linked.c \
+			parsing.c \
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJB_FILES = $(BNS_FILES:.c=.o)
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
-BNS = $(addprefix $(BNS_DIR), $(BNS_FILES))
 OBJB = $(addprefix $(OBJB_DIR), $(OBJB_FILES))
+BNS = $(addprefix $(BNS_DIR), $(BNS_FILES))
 
 ifdef WITH_BONUS
 		TARGET = objb $(NAMEB)
@@ -131,9 +136,9 @@ $(NAMEB): $(OBJB)
 	@echo
 	@echo "\033[01;31m⎹⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴\
 	⎴⎴⎴⎴⎴⎴⎴⎴⎴⎸"
-	@echo "\033[01;31m⎹ \033[0m\033[07;37m    Subject Name              \
+	@echo "\033[01;31m⎹ \033[0m\033[07;37m    Make File                 \
 	 \033[0m\033[01;31m ⎸"
-	@echo "\033[01;31m⎹ \033[0m\033[01;32m    Push_swap + checker       \
+	@echo "\033[01;31m⎹ \033[0m\033[01;32m    checker                   \
 	 \033[0m\033[01;31m ⎸"
 	@echo "\033[01;31m⎹⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵\
 	⎵⎵⎵⎵⎵⎵⎵⎵⎵⎸"

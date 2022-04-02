@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:21:33 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/29 10:02:45 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/02 13:34:23 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	rrr(t_pushswap *t)
 	write(1, "rrr\n", 4);
 }
 
-static int	ft_strcmp(char *a, char *b)
+int	ft_strcmp(char *a, char *b)
 {
 	while (*a != '\0' || *b != '\0')
 	{
