@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 15:22:50 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:23:48 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_atoi(const char *str)
 		else
 			error(2);
 	}
-	return ((int)(nbr * sign));
+	return ((int)(nbr * si));
 }
 
 static char	*save_word(char *str)
