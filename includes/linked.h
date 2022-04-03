@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:04:20 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/31 11:27:03 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 08:37:36 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ typedef struct s_list
 	int		flag;
 }	t_list;
 
-t_node	*delNode(t_list *ls);
-void	pushNode(t_list *ls, t_node *newNode);
-void	addNode(t_list *ls, int data);
+t_node	*del_node(t_list *ls);
+void	push_node(t_list *ls, t_node *newNode);
+void	add_node(t_list *ls, int data);
 void	reset_list(t_list *ls);
-int		searchNode(t_list *ls, int search);
+int		search_node(t_list *ls, int search);
 
 #endif

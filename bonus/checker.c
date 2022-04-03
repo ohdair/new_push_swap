@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:08:38 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 14:02:54 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 08:35:13 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ int	main(int argc, char *argv[])
 		write(1, "OK\n", 3);
 	else if (result == 1 && t->b->size != 0)
 		write(1, "KO\n", 3);
-	freeAll(t);
+	free_all(t);
 	return (0);
 }

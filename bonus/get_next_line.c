@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:08:36 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 13:30:24 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 08:35:06 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	find_nl(char *str)
 	return (-1);
 }
 
-void	freeAll(t_pushswap *t)
+void	free_all(t_pushswap *t)
 {
 	free(t);
 	exit(0);

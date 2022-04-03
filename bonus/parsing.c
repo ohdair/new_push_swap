@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 15:04:59 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 08:34:42 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_atoi(const char *str)
 		{
 			nbr = (nbr * 10) + (*str++ - '0');
 			if ((nbr > 2147483647 && si == 1) || (nbr > 2147483648 && si == -1))
-				 error(2);
+				error(2);
 		}
 		else
 			error(2);
@@ -81,7 +81,7 @@ static int	ft_split(char *argv, t_pushswap *t)
 		{
 			tmp = save_word(argv);
 			data = ft_atoi(tmp);
-			addNode(t->a, data);
+			add_node(t->a, data);
 		}
 		while (*argv != 0 && !is_space(*argv))
 			++argv;

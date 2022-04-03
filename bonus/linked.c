@@ -6,14 +6,14 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 22:00:42 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 08:33:48 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked.h"
 #include <stdio.h>
 
-void	pushNode(t_list *ls, t_node *newNode)
+void	push_node(t_list *ls, t_node *newNode)
 {
 	if (ls->head == NULL)
 	{
@@ -33,7 +33,7 @@ void	pushNode(t_list *ls, t_node *newNode)
 	ls->size++;
 }
 
-int	searchNode(t_list *ls, int search)
+int	search_node(t_list *ls, int search)
 {
 	t_node	*cur;
 
@@ -47,7 +47,7 @@ int	searchNode(t_list *ls, int search)
 	return (cur->index);
 }
 
-void	addNode(t_list *ls, int data)
+void	add_node(t_list *ls, int data)
 {
 	t_node	*tmp;
 
@@ -72,7 +72,7 @@ void	addNode(t_list *ls, int data)
 	ls->size++;
 }
 
-t_node	*delNode(t_list *ls)
+t_node	*del_node(t_list *ls)
 {
 	t_node	*cur;
 	t_node	*tmp;

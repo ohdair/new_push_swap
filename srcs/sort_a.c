@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:28:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/01 13:22:31 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 08:37:37 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	calculate_a(int *db)
 	free(v);
 }
 
-// new!! debug check
 static void	dest_me(t_pushswap *t, int ***db, t_node *me, int my_location)
 {
 	t_node	*com;
@@ -80,8 +79,8 @@ static void	dest_me(t_pushswap *t, int ***db, t_node *me, int my_location)
 	while (++v.a < t->a->size - 1)
 	{
 		if ((com->data < me->data && com->next->data > me->data) || \
-		 (com->data < me->data && com->next->data == v.min) || \
-		 (com->data == v.c && com->next->data > me->data))
+		(com->data < me->data && com->next->data == v.min) || \
+		(com->data == v.c && com->next->data > me->data))
 			v.b = v.a + 1;
 		com = com->next;
 	}

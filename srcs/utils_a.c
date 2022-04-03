@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:21:29 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 15:19:13 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 08:35:36 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	push(t_pushswap *t, char alpha)
 
 	if (alpha == 'a')
 	{
-		tmp = delNode(t->b);
-		pushNode(t->a, tmp);
+		tmp = del_node(t->b);
+		push_node(t->a, tmp);
 		write(1, "pa\n", 3);
 	}
 	else if (alpha == 'b')
 	{
-		tmp = delNode(t->a);
-		pushNode(t->b, tmp);
+		tmp = del_node(t->a);
+		push_node(t->b, tmp);
 		write(1, "pb\n", 3);
 	}
 	return (1);
