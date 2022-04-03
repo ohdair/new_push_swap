@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:06:52 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 13:29:28 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 08:46:55 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t		ft_strlen(const char *str);
 char		*ft_strdup(const char *src);
 char		*free_strjoin(char *s1, char *s2);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-void		freeAll(t_pushswap *t);
+void		free_all(t_pushswap *t);
 int			line_return(char **str, char **line, int idx, int read_size);
 int			one_line(char **str, char **line, int idx);
 int			get_next_line(int fd, char **line);
