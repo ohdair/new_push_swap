@@ -6,12 +6,13 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:08:38 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/04 11:57:57 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:02:07 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line.h"
+#include <stdio.h>
 
 int	checker(t_pushswap *t, int size)
 {

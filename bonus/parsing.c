@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/04 11:56:53 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:38:39 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ static int	ft_split(char *argv, t_pushswap *t)
 {
 	char	*tmp;
 	int		data;
+	int		flag;
 
+	flag = 0;
 	if (!argv)
 		return (0);
 	while (*argv != 0)
@@ -79,11 +81,14 @@ static int	ft_split(char *argv, t_pushswap *t)
 			++argv;
 		if (*argv != 0 && !is_space(*argv))
 		{
+			flag = 1;
 			tmp = save_word(argv);
 			data = ft_atoi(tmp);
 			free(tmp);
 			add_node(t->a, data);
 		}
+		else if (flag == 0)
+			error(2);
 		while (*argv != 0 && !is_space(*argv))
 			++argv;
 	}
@@ -97,11 +102,8 @@ int	parsing_arg(char **argv, int argc, t_pushswap *t)
 	i = 0;
 	while (++i < argc)
 	{
-		if (!ft_split(argv[i], t))
-		{
-			write(1, "Error", 5);
-			return (0);
-		}
+		if (!ft_split(argv[i], t) || *argv[i] == '\0')
+			error(2);
 	}
 	return (1);
 }
