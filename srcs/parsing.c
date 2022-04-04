@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/04 08:34:14 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/04 12:09:57 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static int	ft_split(char *argv, t_pushswap *t)
 		{
 			tmp = save_word(argv);
 			data = ft_atoi(tmp);
+			free(tmp);
 			add_node(t->a, data);
 		}
 		while (*argv != 0 && !is_space(*argv))
@@ -103,8 +104,12 @@ int	parsing_arg(char **argv, int argc, t_pushswap *t)
 			return (0);
 		}
 	}
-	array = get_array(t);
-	get_index(t, array);
+	if (t->a->size)
+	{
+		array = get_array(t);
+		get_index(t, array);
+		free(array);
+	}
 	if (!t->a->size || !check_sort(t) || is_sort(t, t->a->size) == 1)
 		exit(0);
 	return (1);
