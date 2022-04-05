@@ -6,13 +6,57 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:08:38 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/04 16:02:07 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:20:36 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line.h"
-#include <stdio.h>
+
+void	get_index(t_pushswap *t, int *array)
+{
+	t_value	v;
+	int		*arr;
+
+	arr = array;
+	v.a = -1;
+	while (++v.a < t->a->size)
+	{
+		v.b = -1;
+		while (++v.b < v.a)
+		{
+			if (arr[v.b] > arr[v.a])
+			{
+				v.c = arr[v.b];
+				arr[v.b] = arr[v.a];
+				arr[v.a] = v.c;
+			}
+			if (arr[v.b] == arr[v.a])
+				error(2);
+		}
+	}
+}
+
+int	*get_array(t_pushswap *t)
+{
+	t_node	*cur;
+	int		*array;
+	int		i;
+
+	array = (int *)malloc(sizeof(int) * (t->a->size));
+	if (!array)
+		error(0);
+	i = 0;
+	cur = t->a->head;
+	while (cur != t->a->tail)
+	{
+		array[i] = cur->data;
+		cur = cur->next;
+		i++;
+	}
+	array[i] = cur->data;
+	return (array);
+}
 
 int	checker(t_pushswap *t, int size)
 {
@@ -60,5 +104,7 @@ int	main(int argc, char *argv[])
 	else if (result == 1 && t->b->size != 0)
 		write(1, "KO\n", 3);
 	free_all(t);
+	while (1)
+		continue ;
 	return (0);
 }

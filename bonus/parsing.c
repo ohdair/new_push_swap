@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/04 16:38:39 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:18:12 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ static int	ft_split(char *argv, t_pushswap *t)
 
 int	parsing_arg(char **argv, int argc, t_pushswap *t)
 {
+	int	*array;
 	int	i;
 
 	i = 0;
@@ -104,6 +105,12 @@ int	parsing_arg(char **argv, int argc, t_pushswap *t)
 	{
 		if (!ft_split(argv[i], t) || *argv[i] == '\0')
 			error(2);
+	}
+	if (t->a->size)
+	{
+		array = get_array(t);
+		get_index(t, array);
+		free(array);
 	}
 	return (1);
 }

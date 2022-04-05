@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:04:23 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 14:56:51 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:11:11 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "linked.h"
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_stack
 {
